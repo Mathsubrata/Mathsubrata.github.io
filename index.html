@@ -59,19 +59,45 @@
       border-radius: 6px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
+.profile-img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
 
-    /* Header */
-    header {
-      padding: 2rem;
-      border-bottom: 1px solid var(--border);
-    }
+header {
+  padding: 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
 
-    h1.name {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.2rem;
-    }
+/* On mobile screens, stack the image above the text */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+   <!-- Header Section -->
+<header>
+  <img src="profile.jpg" alt="Dr. Subrata Manna" class="profile-img">
+  <div>
+    <h1 class="name">Dr. Subrata Manna</h1>
+    <div class="role">Postdoctoral Fellow</div>
+    <div class="dept">Department of Mathematics, Indian Institute of Technology Bombay</div>
+
+    <div class="meta-links">
+      <span>✉️ <a href="mailto:subrata147314@gmail.com">subrata147314@gmail.com</a></span>
+      <span>📞 (+91) 9382549970</span>
+      <span>📄 <a href="cv.pdf" target="_blank">CV (PDF)</a></span>
+    </div>
+  </div>
+</header>
 
     .role {
       font-size: 1.05rem;
