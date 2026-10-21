@@ -1,1 +1,573 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Your Name | Researcher</title>
+
+    <meta name="description"
+          content="Academic website of Your Name, researcher in your field.">
+
+    <style>
+        :root {
+            --text: #333333;
+            --muted: #666666;
+            --link: #1769aa;
+            --border: #e5e5e5;
+            --background: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--background);
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main page layout */
+
+        .container {
+            width: min(1050px, 90%);
+            margin: 0 auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .header-inner {
+            min-height: 65px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .site-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #444;
+            font-size: 14px;
+        }
+
+        /* Profile section */
+
+        .profile {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 50px;
+            padding: 55px 0 40px;
+            align-items: start;
+        }
+
+        .sidebar {
+            text-align: left;
+        }
+
+        .profile-photo {
+            display: block;
+            width: 100%;
+            max-width: 230px;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 21px;
+            line-height: 1.4;
+            margin: 0 0 5px;
+        }
+
+        .position {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .main-content h1 {
+            font-size: 34px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 22px;
+        }
+
+        .main-content h2 {
+            font-size: 23px;
+            font-weight: 600;
+            margin: 35px 0 12px;
+        }
+
+        .main-content p {
+            margin: 0 0 17px;
+        }
+
+        /* Research interests */
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .interest {
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            background: #fafafa;
+        }
+
+        /* Research items */
+
+        .item {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item h3 {
+            font-size: 17px;
+            margin: 0 0 6px;
+            font-weight: 600;
+        }
+
+        .item p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .year {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+            padding: 25px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* Mobile layout */
+
+        @media (max-width: 700px) {
+            .header-inner {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                gap: 10px 16px;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding-top: 35px;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: 120px 1fr;
+                column-gap: 20px;
+                align-items: start;
+            }
+
+            .profile-photo {
+                width: 120px;
+                height: 140px;
+                grid-row: span 3;
+                margin: 0;
+            }
+
+            .sidebar h2 {
+                font-size: 19px;
+            }
+
+            .social-links {
+                gap: 3px;
+            }
+
+            .main-content h1 {
+                font-size: 29px;
+            }
+
+            .main-content h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container header-inner">
+
+        <a href="#home" class="site-name">Your Name</a>
+
+        <nav aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container profile" id="home">
+
+    <!-- LEFT PROFILE SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <img
+            src="images/profile.jpg"
+            alt="Portrait of Your Name"
+            class="profile-photo"
+        >
+
+        <h2>Your Full Name</h2>
+
+        <div class="position">
+            PhD Researcher<br>
+            Department of Your Field<br>
+            Your University
+        </div>
+
+        <div class="social-links">
+
+            <a href="https://scholar.google.com/">
+                Google Scholar
+            </a>
+
+            <a href="https://github.com/">
+                GitHub
+            </a>
+
+            <a href="https://www.researchgate.net/">
+                ResearchGate
+            </a>
+
+            <a href="https://orcid.org/">
+                ORCID
+            </a>
+
+            <a href="https://www.linkedin.com/">
+                LinkedIn
+            </a>
+
+            <a href="mailto:your.email@university.edu">
+                Email
+            </a>
+
+            <a href="assets/cv.pdf">
+                Curriculum Vitae (PDF)
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- RIGHT MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <section id="about">
+
+            <h1>About Me</h1>
+
+            <p>
+                Hello! Welcome to my academic website.
+                I am a researcher at Your University,
+                where I work on problems in your research field.
+            </p>
+
+            <p>
+                My research focuses on developing theoretical,
+                computational, and experimental approaches to
+                understand important scientific questions.
+                I am particularly interested in combining
+                interdisciplinary methods with practical
+                applications.
+            </p>
+
+            <p>
+                I received my [degree] in [field] from
+                [university]. My current work explores
+                [describe your main research question].
+            </p>
+
+            <p>
+                I am always interested in connecting with
+                researchers and exploring opportunities
+                for collaboration.
+            </p>
+
+        </section>
+
+
+        <section id="research">
+
+            <h2>Research Interests</h2>
+
+            <p>
+                My research interests include:
+            </p>
+
+            <div class="interests">
+
+                <span class="interest">Research Area One</span>
+
+                <span class="interest">Research Area Two</span>
+
+                <span class="interest">Data Science</span>
+
+                <span class="interest">Computational Modeling</span>
+
+                <span class="interest">Interdisciplinary Research</span>
+
+            </div>
+
+        </section>
+
+
+        <section id="publications">
+
+            <h2>Selected Publications</h2>
+
+            <div class="item">
+
+                <span class="year">2026</span>
+
+                <h3>
+                    <a href="https://doi.org/">
+                        Title of Your First Research Paper
+                    </a>
+                </h3>
+
+                <p>
+                    Your Name, Co-author One, and Co-author Two.
+                    Journal Name, 2026.
+                </p>
+
+                <a href="https://doi.org/">
+                    Paper / DOI →
+                </a>
+
+            </div>
+
+            <div class="item">
+
+                <span class="year">2025</span>
+
+                <h3>
+                    <a href="https://doi.org/">
+                        Title of Your Second Research Paper
+                    </a>
+                </h3>
+
+                <p>
+                    Co-author One, Your Name, and Co-author Three.
+                    Journal Name, 2025.
+                </p>
+
+                <a href="https://doi.org/">
+                    Paper / DOI →
+                </a>
+
+            </div>
+
+            <p>
+                <a href="https://scholar.google.com/">
+                    View all publications →
+                </a>
+            </p>
+
+        </section>
+
+
+        <section id="projects">
+
+            <h2>Research Projects</h2>
+
+            <div class="item">
+
+                <h3>
+                    <a href="https://github.com/">
+                        Project One: Your Research Project
+                    </a>
+                </h3>
+
+                <p>
+                    Ongoing project
+                </p>
+
+                <p>
+                    This project investigates an important
+                    research problem using novel methods
+                    and computational techniques.
+                </p>
+
+            </div>
+
+            <div class="item">
+
+                <h3>
+                    <a href="https://github.com/">
+                        Project Two: Scientific Computing
+                    </a>
+                </h3>
+
+                <p>
+                    Completed project
+                </p>
+
+                <p>
+                    This project develops tools and methods
+                    to support reproducible scientific research.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section id="education">
+
+            <h2>Education</h2>
+
+            <div class="item">
+
+                <span class="year">2023 – Present</span>
+
+                <h3>PhD in Your Research Field</h3>
+
+                <p>Your University</p>
+
+            </div>
+
+            <div class="item">
+
+                <span class="year">2020 – 2022</span>
+
+                <h3>Master's Degree in Your Field</h3>
+
+                <p>Your Previous University</p>
+
+            </div>
+
+        </section>
+
+
+        <section id="contact">
+
+            <h2>Contact</h2>
+
+            <p>
+                If you are interested in my research or would
+                like to discuss a potential collaboration,
+                please feel free to contact me.
+            </p>
+
+            <p>
+                Email:
+                <a href="mailto:your.email@university.edu">
+                    your.email@university.edu
+                </a>
+            </p>
+
+            <p>
+                <a href="https://github.com/">
+                    GitHub
+                </a>
+                &nbsp;·&nbsp;
+
+                <a href="https://scholar.google.com/">
+                    Google Scholar
+                </a>
+                &nbsp;·&nbsp;
+
+                <a href="https://orcid.org/">
+                    ORCID
+                </a>
+            </p>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+    <div class="container">
+        © <span id="year">2026</span> Your Full Name.
+        Hosted with GitHub Pages.
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
+```
