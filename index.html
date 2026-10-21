@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Subrata Manna | Postdoctoral Fellow, IIT Bombay</title>
-  <meta name="description" content="Personal academic website of Dr. Subrata Manna, Postdoctoral Fellow in Mathematics at IIT Bombay.">
+  <title>Dr. Subrata Manna — Postdoctoral Fellow, IIT Bombay</title>
+  <meta name="description" content="Academic website of Dr. Subrata Manna, Postdoctoral Fellow in Mathematics at IIT Bombay.">
 
-  <!-- MathJax v3 Configuration for LaTeX Math Rendering -->
+  <!-- MathJax v3 for LaTeX Math Rendering -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        displayMath: [['$$', '$$'], ['[', ']']]
       },
       svg: { fontCache: 'global' }
     };
@@ -19,20 +19,19 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <style>
+    /* --------------------------------------------------------------------------
+       ACADEMIC MINIMALIST STYLES (Inspired by taboege.de)
+       -------------------------------------------------------------------------- */
     :root {
-      --primary: #0f172a;          /* Dark Slate */
-      --accent: #1d4ed8;           /* Royal Blue */
+      --primary: #111827;          /* Near black for primary headings */
+      --accent: #1d4ed8;           /* Deep academic blue */
       --accent-hover: #1e40af;
-      --text-main: #334155;        /* Body Text */
-      --text-muted: #64748b;       /* Muted Text */
-      --bg: #f8fafc;               /* Page Background */
-      --card-bg: #ffffff;          /* Card Background */
-      --border: #e2e8f0;           /* Subtle Border */
-      --badge-preprint: #fef3c7;   /* Soft Yellow */
-      --badge-preprint-text: #92400e;
-      --badge-pub: #dcfce7;        /* Soft Green */
-      --badge-pub-text: #166534;
-      --max-width: 920px;
+      --text: #374151;             /* Charcoal body text */
+      --text-muted: #6b7280;       /* Muted grey */
+      --bg: #f9fafb;               /* Subtle page background */
+      --card-bg: #ffffff;          /* Clean white container */
+      --border: #e5e7eb;           /* Border lines */
+      --max-width: 860px;
     }
 
     * {
@@ -41,590 +40,545 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
-      font-size: 16px;
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
     }
 
-    /* Sticky Top Navigation */
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-    }
-
-    .nav-container {
+    /* Outer Wrapper */
+    .site-wrapper {
       max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.25rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    /* Main Layout Container */
-    .container {
-      max-width: var(--max-width);
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Hero / Header Card */
-    .hero-card {
+      margin: 2.5rem auto;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2.5rem;
-      display: grid;
-      grid-template-columns: 170px 1fr;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      overflow: hidden;
+    }
+
+    /* Header Profile Banner */
+    header.site-header {
+      padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       gap: 2rem;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      margin-bottom: 2rem;
     }
 
-    .profile-photo {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--border);
-      background-color: #cbd5e1;
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
+    .header-info h1 {
+      font-size: 2rem;
       color: var(--primary);
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.15rem;
+    .header-info .subtitle {
+      font-size: 1.1rem;
       color: var(--accent);
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
-    .hero-affiliation {
-      font-size: 1rem;
+    .header-info .institution {
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 1rem;
     }
 
-    .contact-details {
-      font-size: 0.92rem;
-      color: var(--text-main);
-      margin-bottom: 1.25rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.4rem;
-    }
-
-    /* Link Buttons */
-    .btn-group {
+    .header-contact {
+      font-size: 0.88rem;
+      color: var(--text);
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 1rem;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.4rem 0.85rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
+    .header-contact a {
+      color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
+    }
+
+    .header-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tab Navigation Bar */
+    nav.tab-nav {
+      display: flex;
+      background: #f3f4f6;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
       transition: all 0.2s ease;
-      border: 1px solid var(--border);
-      background-color: #f1f5f9;
-      color: var(--primary);
     }
 
-    .btn:hover {
-      background-color: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
+    .tab-btn:hover {
+      color: var(--accent);
+      background-color: rgba(255, 255, 255, 0.5);
     }
 
-    .btn-primary {
-      background-color: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
+    .tab-btn.active {
+      color: var(--accent);
+      background-color: var(--card-bg);
+      border-bottom-color: var(--accent);
     }
 
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-    }
-
-    /* Section Styling */
-    .section-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+    /* Main Content Body */
+    main.content-area {
       padding: 2.25rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      min-height: 420px;
     }
 
+    /* Tab Content Visibility */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Headings & Subheadings */
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--primary);
       margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* List Formatting */
-    .item-list {
+    h3 {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Item Lists */
+    ul.item-list {
       list-style: none;
     }
 
-    .item-list > li {
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
+    ul.item-list > li {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
       border-bottom: 1px dashed var(--border);
     }
 
-    .item-list > li:last-child {
-      padding-bottom: 0;
-      margin-bottom: 0;
+    ul.item-list > li:last-child {
       border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
 
     .item-title {
       font-weight: 600;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--primary);
+    }
+
+    .item-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .item-meta {
+      font-size: 0.88rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Status Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: 0.4rem;
+    }
+
+    .badge-pub { background: #dcfce7; color: #166534; }
+    .badge-prep { background: #fef3c7; color: #92400e; }
+
+    /* Links & Buttons */
+    .link-btn {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin-top: 0.4rem;
+      margin-right: 0.3rem;
+      transition: all 0.15s ease;
+    }
+
+    .link-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    /* Skill & Tag Pills */
+    .pill {
+      display: inline-block;
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      margin-right: 0.3rem;
       margin-bottom: 0.3rem;
     }
 
-    .item-authors {
-      font-size: 0.95rem;
-      color: var(--text-main);
-      margin-bottom: 0.2rem;
-    }
-
-    .item-venue {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-bottom: 0.6rem;
-    }
-
-    /* Badges */
-    .badge {
-      display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-right: 0.5rem;
-    }
-
-    .badge-preprint { background: var(--badge-preprint); color: var(--badge-preprint-text); }
-    .badge-published { background: var(--badge-pub); color: var(--badge-pub-text); }
-
-    /* Collapsible Details */
-    details.abstract-toggle {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    details.abstract-toggle summary {
-      font-size: 0.85rem;
-      color: var(--accent);
-      cursor: pointer;
-      font-weight: 600;
-      user-select: none;
-    }
-
-    details.abstract-toggle summary:hover {
-      text-decoration: underline;
-    }
-
-    .abstract-content {
-      background: #f8fafc;
-      padding: 0.85rem 1rem;
-      border-left: 3px solid var(--accent);
-      border-radius: 4px;
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #475569;
-    }
-
-    /* Grid for Skills & Education */
-    .grid-two-col {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-pill {
-      display: inline-block;
-      background: #f1f5f9;
-      color: #334155;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-      border: 1px solid var(--border);
-    }
-
+    /* Footer */
     footer {
+      padding: 1.25rem 2.5rem;
+      border-top: 1px solid var(--border);
       text-align: center;
-      padding: 2rem 0;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
+      background: #fafafa;
     }
 
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .hero-card {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 1.75rem;
-      }
-      .profile-photo {
-        margin: 0 auto;
-      }
-      .nav-container {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .contact-details {
-        grid-template-columns: 1fr;
-      }
-      .btn-group {
-        justify-content: center;
-      }
-      .section-card {
-        padding: 1.5rem;
-      }
-    }
-
-    /* Print Formatting */
-    @media print {
-      .navbar, .btn-group, details summary { display: none !important; }
-      body { background: white; color: black; }
-      .container { max-width: 100%; margin: 0; padding: 0; }
-      .section-card, .hero-card { border: none; box-shadow: none; padding: 0; margin-bottom: 1.5rem; }
+    /* Responsive Design */
+    @media (max-width: 640px) {
+      .site-wrapper { margin: 0; border-radius: 0; border: none; }
+      header.site-header { padding: 1.5rem; flex-direction: column; }
+      main.content-area { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Top Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">Dr. Subrata Manna</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#talks">Talks & Events</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="site-wrapper">
 
-  <div class="container">
+    <!-- Header Section -->
+    <header class="site-header">
+      <div class="header-info">
+        <h1>Dr. Subrata Manna</h1>
+        <div class="subtitle">Postdoctoral Fellow in Mathematics</div>
+        <div class="institution">Department of Mathematics, Indian Institute of Technology Bombay</div>
 
-    <!-- Profile Header Card -->
-    <header class="hero-card" id="about">
-      <!-- To show your picture: upload image as 'profile.jpg' to your repo and update src below -->
-      <img src="https://via.placeholder.com/170" alt="Dr. Subrata Manna" class="profile-photo">
-      
-      <div>
-        <h1 class="hero-title">Dr. Subrata Manna</h1>
-        <div class="hero-subtitle">Postdoctoral Fellow in Mathematics</div>
-        <div class="hero-affiliation">Department of Mathematics, Indian Institute of Technology Bombay</div>
-
-        <div class="contact-details">
-          <div><strong>Email:</strong> <a href="mailto:subrata147314@gmail.com" style="color:var(--accent)">subrata147314@gmail.com</a></div>
-          <div><strong>Phone:</strong> (+91) 9382549970</div>
-          <div><strong>PhD:</strong> IIT Hyderabad (2021–2025)</div>
-          <div><strong>PhD Advisor:</strong> Dr. Mrinmoy Datta</div>
-        </div>
-
-        <div class="btn-group">
-          <a href="cv.pdf" target="_blank" class="btn btn-primary">📄 Download CV (PDF)</a>
-          <a href="https://arxiv.org/abs/2605.23221" target="_blank" class="btn">arXiv Profile</a>
-          <a href="https://github.com/mathsubrata" target="_blank" class="btn">GitHub</a>
+        <div class="header-contact">
+          <span>✉️ <a href="mailto:subrata147314@gmail.com">subrata147314@gmail.com</a></span>
+          <span>📞 (+91) 9382549970</span>
+          <span>📄 <a href="cv.pdf" target="_blank">Download Full CV (PDF)</a></span>
         </div>
       </div>
     </header>
 
-    <!-- Research Focus & Summary -->
-    <section class="section-card" id="research">
-      <h2>Research Focus & Doctoral Thesis</h2>
-      <p>
-        My research lies in <strong>Algebraic Coding Theory, Finite Geometry, Algebraic Geometry, Combinatorics, and Cryptography</strong>. 
-        In my doctoral work at IIT Hyderabad, I explored spherical $s$-distance sets and the intersection properties of degree $d$ hypersurfaces with non-degenerate Hermitian varieties in projective spaces $\mathbb{P}^n(\mathbb{F}_{q^2})$.
-      </p>
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('about')" data-tab="about">About</button>
+      <button class="tab-btn" onclick="switchTab('research')" data-tab="research">Research</button>
+      <button class="tab-btn" onclick="switchTab('publications')" data-tab="publications">Publications</button>
+      <button class="tab-btn" onclick="switchTab('education')" data-tab="education">Education</button>
+      <button class="tab-btn" onclick="switchTab('teaching')" data-tab="teaching">Teaching</button>
+      <button class="tab-btn" onclick="switchTab('talks')" data-tab="talks">Talks & Events</button>
+    </nav>
 
-      <details class="abstract-toggle" style="margin-top: 1rem;">
-        <summary><strong>Read Doctoral Thesis Summary</strong></summary>
-        <div class="abstract-content">
+    <!-- Main Content Area with Separate Tabs -->
+    <main class="content-area">
+
+      <!-- TAB 1: ABOUT -->
+      <section id="about" class="tab-pane active">
+        <h2>About Me</h2>
+        <p>
+          I am a Postdoctoral Fellow in the Department of Mathematics at the <strong>Indian Institute of Technology Bombay</strong>[cite: 1]. 
+          I completed my Ph.D. in Mathematics from the <strong>Indian Institute of Technology Hyderabad</strong> under the guidance of <strong>Dr. Mrinmoy Datta</strong>[cite: 1].
+        </p>
+
+        <h3>Areas of Interest</h3>
+        <p>
+          My primary research interests include:
+        </p>
+        <p>
+          <span class="pill">Algebraic Coding Theory</span>
+          <span class="pill">Finite Geometry</span>
+          <span class="pill">Algebraic Geometry</span>
+          <span class="pill">Combinatorics</span>
+          <span class="pill">Cryptography</span>[cite: 1]
+        </p>
+
+        <h3 style="margin-top: 1.5rem;">Awards & Honors</h3>
+        <ul class="item-list">
+          <li>
+            <div class="item-title">CSIR-UGC NET (JRF)</div>
+            <div class="item-sub">Dec 2019[cite: 2]</div>
+          </li>
+          <li>
+            <div class="item-title">Merit Cum Means Scholarship</div>
+            <div class="item-sub">Government of West Bengal (2015–2020)[cite: 2]</div>
+          </li>
+        </ul>
+
+        <h3 style="margin-top: 1.5rem;">Technical Skills & Languages</h3>
+        <p><strong>Programming:</strong> <span class="pill">C</span> <span class="pill">Mathematica</span> <span class="pill">SageMath</span> <span class="pill">LEAN</span>[cite: 2]</p>
+        <p><strong>Scientific Softwares:</strong> <span class="pill">LaTeX</span> <span class="pill">MS Office</span>[cite: 2]</p>
+        <p><strong>Languages:</strong> <span class="pill">Bengali</span> <span class="pill">English</span> <span class="pill">Hindi</span>[cite: 2]</p>
+      </section>
+
+      <!-- TAB 2: RESEARCH -->
+      <section id="research" class="tab-pane">
+        <h2>Research & Doctoral Work</h2>
+        
+        <p>
+          My research explores spherical $s$-distance sets and the intersection of degree $d$ hypersurfaces with non-degenerate Hermitian varieties in projective spaces[cite: 3].
+        </p>
+
+        <h3>Doctoral Thesis Summary</h3>
+        <p><strong>Thesis Title:</strong> <em>A result of s-distance sets and some results towards Edoukou's conjecture on intersection of Hermitian threefolds</em>[cite: 1]</p>
+        <div style="background: #f9fafb; padding: 1rem; border-left: 3px solid var(--accent); margin-bottom: 1.5rem; font-size: 0.92rem;">
           <p>
-            <strong>Thesis Title:</strong> <em>A result of $s$-distance sets and some results towards Edoukou's conjecture on intersection of Hermitian threefolds</em>
+            <strong>Part 1 — Spherical $s$-distance sets:</strong> We studied the cardinality of spherical $s$-distance sets and derived a new upper bound generalizing Gerzon's bound under the condition that the sum of inner products over distinct pairs is zero, comparing it with previously established bounds[cite: 3].
           </p>
-          <br>
-          <p>
-            My doctoral work is divided into two main parts:
+          <p style="margin-bottom: 0;">
+            <strong>Part 2 — Edoukou's Conjecture:</strong> We investigated Edoukou's conjecture regarding the maximum number of $\mathbb{F}_{q^2}$-rational points in the intersection of a degree $d$ threefold with a non-degenerate Hermitian threefold in $\mathbb{P}^4(\mathbb{F}_{q^2})$[cite: 3]. We verified the conjecture for $d=3$ ($q \ge 7$), gave an independent proof for $d=2$, and generalized this to confirm the Edoukou-Ling-Xing conjecture for cubic hypersurfaces in $\mathbb{P}^n(\mathbb{F}_{q^2})$ ($n \ge 4$)[cite: 3].
           </p>
-          <ol style="margin-left: 1.25rem; margin-top: 0.5rem;">
-            <li>
-              <strong>Spherical $s$-distance sets:</strong> We derived a new upper bound on the cardinality of spherical $s$-distance sets by generalizing Gerzon's bound under the condition that the sum of inner products over distinct pairs vanishes, comparing it with classical bounds.
-            </li>
-            <li style="margin-top: 0.4rem;">
-              <strong>Edoukou's Conjecture & Hermitian Varieties:</strong> We investigated Edoukou's 2009 conjecture regarding the maximum number of $\mathbb{F}_{q^2}$-rational points in the intersection of a degree $d$ threefold with a non-degenerate Hermitian threefold in $\mathbb{P}^4(\mathbb{F}_{q^2})$. We verified the conjecture for cubic threefolds ($d=3$) for $q \ge 7$ and provided an independent proof for $d=2$. Furthermore, we generalized this to higher dimensions for $n \ge 4$, confirming the Edoukou-Ling-Xing conjecture for cubic hypersurfaces.
-            </li>
-          </ol>
-        </div>
-      </details>
-    </section>
-
-    <!-- Publications & Preprints -->
-    <section class="section-card" id="publications">
-      <h2>Publications & Preprints</h2>
-
-      <ul class="item-list">
-
-        <!-- Pub 1 -->
-        <li>
-          <div class="item-title">
-            <span class="badge badge-published">Published</span>
-            Functional codes arising from rank $n$ Hermitian varieties and hypersurfaces in low dimensions
-          </div>
-          <div class="item-authors">
-            <strong>S. Manna</strong>
-          </div>
-          <div class="item-venue">
-            <em>Designs, Codes and Cryptography</em> 94, 31 (2026).
-          </div>
-          <div class="btn-group">
-            <a href="https://doi.org/10.1007/s10623-025-01766-x" target="_blank" class="btn">DOI Link</a>
-          </div>
-        </li>
-
-        <!-- Pub 2 -->
-        <li>
-          <div class="item-title">
-            <span class="badge badge-preprint">Preprint</span>
-            Functional codes arising from rank $n$ Hermitian varieties and hypersurfaces in low dimensions
-          </div>
-          <div class="item-authors">
-            <strong>S. Manna</strong>
-          </div>
-          <div class="item-venue">
-            arXiv preprint, 2026.
-          </div>
-          <div class="btn-group">
-            <a href="https://arxiv.org/abs/2605.23221" target="_blank" class="btn">arXiv:2605.23221</a>
-          </div>
-        </li>
-
-        <!-- Pub 3 -->
-        <li>
-          <div class="item-title">
-            <span class="badge badge-published">Published</span>
-            Maximum number of points on an intersection of a cubic threefold and a non-degenerate Hermitian threefold
-          </div>
-          <div class="item-authors">
-            M. Datta and <strong>S. Manna</strong>
-          </div>
-          <div class="item-venue">
-            <em>Finite Fields and Their Applications</em> 98 (2024), Paper No. 102462, 23 pp.
-          </div>
-          <div class="btn-group">
-            <a href="https://doi.org/10.1016/j.ffa.2024.102462" target="_blank" class="btn">DOI Link</a>
-          </div>
-        </li>
-
-        <!-- Pub 4 -->
-        <li>
-          <div class="item-title">
-            <span class="badge badge-published">Published</span>
-            A generalization of Gerzon's bound on spherical $s$-distance sets
-          </div>
-          <div class="item-authors">
-            M. Datta and <strong>S. Manna</strong>
-          </div>
-          <div class="item-venue">
-            <em>Periodica Mathematica Hungarica</em> 87 (2023), no. 1, 51–56.
-          </div>
-          <div class="btn-group">
-            <a href="https://doi.org/10.1007/s10998-022-00501-6" target="_blank" class="btn">DOI Link</a>
-          </div>
-        </li>
-
-        <!-- Pub 5 -->
-        <li>
-          <div class="item-title">
-            <span class="badge badge-preprint">Working Paper</span>
-            Edoukou's conjecture on Hermitian threefolds
-          </div>
-          <div class="item-authors">
-            M. Datta and <strong>S. Manna</strong>
-          </div>
-          <div class="item-venue">
-            (To be submitted)
-          </div>
-        </li>
-
-      </ul>
-    </section>
-
-    <!-- Education Section -->
-    <section class="section-card" id="education">
-      <h2>Education & Position</h2>
-
-      <ul class="item-list">
-        <li>
-          <div class="item-title">Postdoctoral Fellow</div>
-          <div class="item-authors">Department of Mathematics, Indian Institute of Technology Bombay</div>
-          <div class="item-venue">May 2026 – Present</div>
-        </li>
-
-        <li>
-          <div class="item-title">Doctor of Philosophy (Ph.D.) in Mathematics</div>
-          <div class="item-authors">Department of Mathematics, Indian Institute of Technology Hyderabad</div>
-          <div class="item-venue">January 2021 – October 2025 | Advisor: Dr. Mrinmoy Datta</div>
-        </li>
-
-        <li>
-          <div class="item-title">Master of Science (M.Sc.) in Pure Mathematics</div>
-          <div class="item-authors">Department of Pure Mathematics, University of Calcutta</div>
-          <div class="item-venue">2018 – 2020 | CGPA: 8.33 / 10</div>
-        </li>
-
-        <li>
-          <div class="item-title">Bachelor of Science (B.Sc.) in Mathematics</div>
-          <div class="item-authors">Uluberia College, University of Calcutta</div>
-          <div class="item-venue">2015 – 2018 | Aggregate: 76.08%</div>
-        </li>
-      </ul>
-    </section>
-
-    <!-- Awards, Skills, & Tools -->
-    <section class="section-card">
-      <div class="grid-two-col">
-        <div>
-          <h2>Awards & Honors</h2>
-          <ul style="margin-left: 1.25rem; font-size: 0.95rem;">
-            <li style="margin-bottom:0.5rem"><strong>CSIR-UGC NET (JRF):</strong> Awarded in December 2019.</li>
-            <li><strong>Merit Cum Means Scholarship:</strong> Govt. of West Bengal (2015–2020).</li>
-          </ul>
         </div>
 
-        <div>
-          <h2>Technical Skills & Softwares</h2>
-          <div style="margin-bottom:0.8rem">
-            <strong>Programming:</strong><br>
-            <span class="skill-pill">C</span>
-            <span class="skill-pill">Mathematica</span>
-            <span class="skill-pill">SageMath</span>
-            <span class="skill-pill">LEAN</span>
-          </div>
-          <div>
-            <strong>Scientific Tools & Languages:</strong><br>
-            <span class="skill-pill">LaTeX</span>
-            <span class="skill-pill">MS Office</span>
-            <span class="skill-pill">English</span>
-            <span class="skill-pill">Bengali</span>
-            <span class="skill-pill">Hindi</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <h3>Advanced Graduate Courses Followed</h3>
+        <ul class="item-list">
+          <li>
+            <div class="item-title">Algebraic Geometry (48 Hours)</div>
+            <div class="item-meta">Affine algebraic sets, Hilbert's Nullstellensatz, projective algebraic sets, Bézout's Theorem, Hilbert-Serre Theorem, non-singularity, degree and dimension of a variety[cite: 2].</div>
+          </li>
+          <li>
+            <div class="item-title">Algebraic Coding Theory (48 Hours)</div>
+            <div class="item-meta">Parameters of linear codes, generator matrices, Singleton bound, code duals, parity-check matrices, cyclic codes, Reed-Muller codes, MDS codes, BCH codes[cite: 2].</div>
+          </li>
+          <li>
+            <div class="item-title">Cryptography and Elliptic Curves (48 Hours)</div>
+            <div class="item-meta">Elliptic curves applications to cryptography, public key cryptography, RSA, hash functions, Diffie-Hellman key exchange[cite: 2].</div>
+          </li>
+        </ul>
+      </section>
 
-    <!-- Teaching Experience -->
-    <section class="section-card" id="teaching">
-      <h2>Teaching Experience</h2>
+      <!-- TAB 3: PUBLICATIONS -->
+      <section id="publications" class="tab-pane">
+        <h2>Publications & Preprints</h2>
 
-      <ul class="item-list">
-        <li>
-          <div class="item-title">Teaching Assistant (TA)</div>
-          <div class="item-authors">Indian Institute of Technology Hyderabad (IITH)</div>
-          <div class="item-venue">Courses assisted: Linear Algebra, Calculus, Transformation Techniques, Number Theory, Complex Analysis.</div>
-        </li>
+        <ul class="item-list">
 
-        <li>
-          <div class="item-title">Teaching Assistant — AIS Advanced Topics in Finite Fields</div>
-          <div class="item-authors">IMSc (2023)</div>
-          <div class="item-venue">Assisted course instructor Dr. Mrinmoy Datta.</div>
-        </li>
-      </ul>
-    </section>
+          <li>
+            <div class="item-title">
+              <span class="badge badge-pub">Published</span>
+              Functional codes arising from rank $n$ Hermitian varieties and hypersurfaces in low dimensions
+            </div>
+            <div class="item-sub">S. Manna[cite: 1]</div>
+            <div class="item-meta"><em>Designs, Codes and Cryptography</em> 94, 31 (2026)[cite: 1].</div>
+            <a href="https://doi.org/10.1007/s10623-025-01766-x" target="_blank" class="link-btn">DOI: 10.1007/s10623-025-01766-x</a>[cite: 1]
+          </li>
 
-    <!-- Talks & Conferences -->
-    <section class="section-card" id="talks">
-      <h2>Conferences & Talks</h2>
+          <li>
+            <div class="item-title">
+              <span class="badge badge-prep">Preprint</span>
+              Functional codes arising from rank $n$ Hermitian varieties and hypersurfaces in low dimensions
+            </div>
+            <div class="item-sub">S. Manna[cite: 1]</div>
+            <div class="item-meta">arXiv preprint (2026)[cite: 1].</div>
+            <a href="https://arxiv.org/abs/2605.23221" target="_blank" class="link-btn">arXiv:2605.23221</a>[cite: 1]
+          </li>
 
-      <h3 style="font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">Conference Talks</h3>
-      <ul class="item-list" style="margin-bottom: 1.5rem;">
-        <li>
-          <div class="item-title">IIT Bombay - Virginia Tech Joint Workshop on Algebraic Coding Theory (IITB-VT ACTW-2024)</div>
-          <div class="item-venue">August 23–25, 2024</div>
-        </li>
-      </ul>
+          <li>
+            <div class="item-title">
+              <span class="badge badge-pub">Published</span>
+              Maximum number of points on an intersection of a cubic threefold and a non-degenerate Hermitian threefold
+            </div>
+            <div class="item-sub">M. Datta and S. Manna[cite: 1]</div>
+            <div class="item-meta"><em>Finite Fields and Their Applications</em> 98 (2024), Paper No. 102462, 23 pp[cite: 1].</div>
+            <a href="https://doi.org/10.1016/j.ffa.2024.102462" target="_blank" class="link-btn">DOI: 10.1016/j.ffa.2024.102462</a>[cite: 1]
+          </li>
 
-      <h3 style="font-size:1.1rem; color:var(--primary); margin-bottom:0.8rem;">Attended Workshops & Schools</h3>
-      <ul style="margin-left: 1.25rem; font-size: 0.95rem;">
-        <li style="margin-bottom:0.4rem"><strong>CIMPA-NCM School on Finite Geometry and Coding Theory:</strong> IITH (Nov 20 – Dec 1, 2023).</li>
-        <li style="margin-bottom:0.4rem"><strong>COCAAG 2023:</strong> IITH (Feb 8–11, 2023).</li>
-        <li style="margin-bottom:0.4rem"><strong>Algebra and Number Theory in Hyderabad:</strong> HCU (Feb 4–5, 2023).</li>
-        <li><strong>SuSAAN Summer School of Applied Arithmetic:</strong> Nesin Mathematics Village, Turkey (June 6–17, 2022).</li>
-      </ul>
-    </section>
+          <li>
+            <div class="item-title">
+              <span class="badge badge-pub">Published</span>
+              A generalization of Gerzon's bound on spherical $s$-distance sets
+            </div>
+            <div class="item-sub">M. Datta and S. Manna[cite: 1]</div>
+            <div class="item-meta"><em>Periodica Mathematica Hungarica</em> 87 (2023), no. 1, 51–56[cite: 1].</div>
+            <a href="https://doi.org/10.1007/s10998-022-00501-6" target="_blank" class="link-btn">DOI: 10.1007/s10998-022-00501-6</a>[cite: 1]
+          </li>
+
+          <li>
+            <div class="item-title">
+              <span class="badge badge-prep">Working Paper</span>
+              Edoukou's conjecture on Hermitian threefolds
+            </div>
+            <div class="item-sub">M. Datta and S. Manna[cite: 1]</div>
+            <div class="item-meta">(To be submitted)[cite: 1]</div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- TAB 4: EDUCATION -->
+      <section id="education" class="tab-pane">
+        <h2>Education</h2>
+
+        <ul class="item-list">
+          <li>
+            <div class="item-title">Postdoctoral Fellow</div>
+            <div class="item-sub">Department of Mathematics, Indian Institute of Technology Bombay</div>
+            <div class="item-meta">May 2026 – Present[cite: 1]</div>
+          </li>
+
+          <li>
+            <div class="item-title">Doctor of Philosophy (Ph.D.) in Mathematics</div>
+            <div class="item-sub">Department of Mathematics, Indian Institute of Technology Hyderabad</div>
+            <div class="item-meta">January 2021 – October 2025 | Advisor: Dr. Mrinmoy Datta[cite: 1]</div>
+          </li>
+
+          <li>
+            <div class="item-title">Master of Science (M.Sc.) in Pure Mathematics</div>
+            <div class="item-sub">Department of Pure Mathematics, University of Calcutta</div>
+            <div class="item-meta">2018 – 2020 | CGPA: 8.33 / 10[cite: 1]</div>
+          </li>
+
+          <li>
+            <div class="item-title">Bachelor of Science (B.Sc.) in Mathematics</div>
+            <div class="item-sub">Uluberia College, University of Calcutta</div>
+            <div class="item-meta">2015 – 2018 | Aggregate: 76.08%[cite: 1]</div>
+          </li>
+
+          <li>
+            <div class="item-title">Higher Secondary (10+2)</div>
+            <div class="item-sub">Baishnabchak M.C. High School, WBCHSE</div>
+            <div class="item-meta">2013 – 2015 | Aggregate: 94.6%[cite: 1]</div>
+          </li>
+
+          <li>
+            <div class="item-title">Secondary School</div>
+            <div class="item-sub">Sulani High School, WBBSE</div>
+            <div class="item-meta">2013 | Aggregate: 90.43%[cite: 1]</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- TAB 5: TEACHING -->
+      <section id="teaching" class="tab-pane">
+        <h2>Teaching Experience</h2>
+
+        <ul class="item-list">
+          <li>
+            <div class="item-title">Teaching Assistant (TA)</div>
+            <div class="item-sub">Indian Institute of Technology Hyderabad</div>
+            <div class="item-meta">Assisted courses in Linear Algebra, Calculus, Transformation Techniques, Number Theory, and Complex Analysis[cite: 2].</div>
+          </li>
+
+          <li>
+            <div class="item-title">Teaching Assistant — AIS Advanced Topics in Finite Fields</div>
+            <div class="item-sub">IMSc (2023)</div>
+            <div class="item-meta">Assisted Dr. Mrinmoy Datta[cite: 2].</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- TAB 6: TALKS & EVENTS -->
+      <section id="talks" class="tab-pane">
+        <h2>Talks & Events</h2>
+
+        <h3>Conference Talks</h3>
+        <ul class="item-list" style="margin-bottom: 1.5rem;">
+          <li>
+            <div class="item-title">IIT Bombay - Virginia Tech Joint Workshop on Algebraic Coding Theory (IITB-VT ACTW-2024)</div>
+            <div class="item-meta">August 23–25, 2024[cite: 2]</div>
+          </li>
+        </ul>
+
+        <h3>Conferences & Workshops Attended</h3>
+        <ul class="item-list">
+          <li>
+            <div class="item-title">CIMPA-NCM School on Finite Geometry and Coding Theory</div>
+            <div class="item-meta">IIT Hyderabad | Nov 20 – Dec 1, 2023[cite: 2]</div>
+          </li>
+          <li>
+            <div class="item-title">COCAAG 2023</div>
+            <div class="item-meta">IIT Hyderabad | Feb 8–11, 2023[cite: 2]</div>
+          </li>
+          <li>
+            <div class="item-title">Algebra and Number Theory in Hyderabad</div>
+            <div class="item-meta">HCU | Feb 4–5, 2023[cite: 2]</div>
+          </li>
+          <li>
+            <div class="item-title">SuSAAN Summer School of Applied Arithmetic</div>
+            <div class="item-meta">Nesin Mathematics Village, Turkey | June 6–17, 2022[cite: 2]</div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2026 Dr. Subrata Manna • Hosted on GitHub Pages
+    </footer>
 
   </div>
 
-  <footer>
-    &copy; 2026 Dr. Subrata Manna • Hosted on GitHub Pages
-  </footer>
+  <!-- Tab Switch Script -->
+  <script>
+    function switchTab(tabId) {
+      // Hide all panes
+      const panes = document.querySelectorAll('.tab-pane');
+      panes.forEach(pane => pane.classList.remove('active'));
+
+      // Deactivate all tab buttons
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Activate selected pane and button
+      const selectedPane = document.getElementById(tabId);
+      const selectedButton = document.querySelector(`[data-tab="${tabId}"]`);
+
+      if (selectedPane) selectedPane.classList.add('active');
+      if (selectedButton) selectedButton.classList.add('active');
+
+      // Update URL hash without scrolling
+      history.pushState(null, null, `#${tabId}`);
+    }
+
+    // Support browser back/forward buttons and initial hash loading
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '') || 'about';
+      switchTab(hash);
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace('#', '') || 'about';
+      switchTab(hash);
+    });
+  </script>
 
 </body>
 </html>
