@@ -1,13 +1,21 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Subrata Manna | Researcher</title>
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description"
+          content="Subrata Manna — researcher in algebraic geometry, linear codes, and code-based cryptography.">
+
+    <title>Subrata Manna | Academic Researcher</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"
           rel="stylesheet">
 
     <!-- Font Awesome Icons -->
@@ -15,6 +23,32 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
+        /* =========================================
+           GLOBAL DESIGN SYSTEM
+        ========================================= */
+
+        :root {
+            --ink: #172033;
+            --text: #465168;
+            --muted: #778197;
+
+            --primary: #5869b7;
+            --primary-dark: #3f5097;
+            --primary-light: #eef0ff;
+
+            --teal: #159d8c;
+            --pink: #d94f70;
+            --blue: #0a66c2;
+            --gold: #e4a23b;
+
+            --page: #f7f8fc;
+            --white: #ffffff;
+            --border: #e7eaf2;
+
+            --shadow: 0 12px 35px rgba(30, 43, 82, 0.06);
+            --radius: 20px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -23,186 +57,416 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
+            scroll-padding-top: 100px;
         }
 
         body {
-            font-family: 'Lato', Arial, sans-serif;
-            color: #383838;
-            background: #ffffff;
-            font-size: 17px;
-            line-height: 1.6;
+            font-family: "Inter", "Lato", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--page);
+            font-size: 16px;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
         a {
-            color: #8792b0;
+            color: var(--primary);
             text-decoration: none;
+            transition: color 0.2s ease,
+                        background 0.2s ease,
+                        transform 0.2s ease;
         }
 
         a:hover {
-            color: #52658e;
+            color: var(--primary-dark);
         }
 
-        /* =========================
-           TOP NAVIGATION
-        ========================= */
+        a:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 4px;
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
         .navbar {
-            width: 100%;
-            min-height: 80px;
-            padding: 15px 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
             position: sticky;
             top: 0;
             z-index: 100;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+
+            width: 100%;
+            padding: 16px clamp(20px, 4vw, 60px);
+
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-size: 21px;
-            font-weight: 700;
-            color: #333333;
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+
+            color: var(--ink);
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
             white-space: nowrap;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 5px var(--primary-light);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 35px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
             list-style: none;
         }
 
         .nav-links a {
-            font-size: 17px;
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 999px;
+
+            color: #475168;
+            font-size: 13px;
             font-weight: 700;
-            color: #374151;
         }
 
         .nav-links a:hover {
-            color: #8792b0;
+            color: var(--primary-dark);
+            background: var(--primary-light);
         }
 
-        /* =========================
-           MAIN TWO-COLUMN LAYOUT
-        ========================= */
+        /* =========================================
+           MAIN PROFILE LAYOUT
+        ========================================= */
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 35px 30px 50px;
             display: grid;
-            grid-template-columns: 31% 1fr;
-            gap: 55px;
+            grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
             align-items: start;
+            gap: clamp(30px, 5vw, 65px);
+
+            max-width: 1220px;
+            margin: 42px auto 35px;
+            padding: 0 25px;
         }
 
-        /* =========================
-           LEFT PROFILE SIDEBAR
-        ========================= */
+        /* =========================================
+           PROFILE SIDEBAR
+        ========================================= */
 
         .sidebar {
+            position: sticky;
+            top: 110px;
+
+            padding: 32px 23px;
             text-align: center;
-            padding-top: 8px;
+
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
         .profile-image {
-            width: 245px;
-            height: 245px;
-            max-width: 100%;
-            border-radius: 50%;
-            object-fit: cover;
             display: block;
+
+            width: 185px;
+            height: 185px;
             margin: 0 auto 22px;
+
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #f0f2ff;
+
+            box-shadow: 0 0 0 1px #dce1fb;
         }
 
         .sidebar h1 {
-            font-size: 32px;
-            font-weight: 300;
-            line-height: 1.3;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+
+            font-size: 29px;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.04em;
         }
 
         .position {
-            font-size: 21px;
-            font-weight: 300;
-            color: #a0a0a0;
-            margin-bottom: 10px;
+            display: inline-block;
+
+            margin-bottom: 15px;
+            padding: 5px 13px;
+
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            border-radius: 999px;
+
+            font-size: 13px;
+            font-weight: 700;
         }
 
         .university {
-            font-size: 21px;
-            line-height: 1.4;
-            font-weight: 300;
-            color: #8792b0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        /* Social media icons */
+        /* =========================================
+           COLOURED SOCIAL ICONS
+        ========================================= */
 
         .social-icons {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 17px;
-            margin-top: 45px;
+            gap: 12px;
+
+            margin-top: 27px;
         }
 
         .social-icons a {
-            font-size: 30px;
-            color: #8792b0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 14px;
+            font-size: 21px;
+
+            transition: transform 0.2s ease,
+                        box-shadow 0.2s ease;
         }
 
         .social-icons a:hover {
-            color: #52658e;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(30, 43, 82, 0.13);
         }
 
-        /* =========================
-           RIGHT MAIN CONTENT
-        ========================= */
+        /* Email */
+
+        .email-link {
+            color: #d94f70;
+            background: #fff0f3;
+        }
+
+        .email-link:hover {
+            color: #b72f51;
+            background: #ffe1e8;
+        }
+
+        /* Google Scholar */
+
+        .scholar-link {
+            color: #4285f4;
+            background: #edf4ff;
+        }
+
+        .scholar-link:hover {
+            color: #185abc;
+            background: #dceaff;
+        }
+
+        /* ResearchGate */
+
+        .researchgate-link {
+            color: #00a99d;
+            background: #e8fbf8;
+        }
+
+        .researchgate-link:hover {
+            color: #007e75;
+            background: #d4f5ef;
+        }
+
+        /* LinkedIn */
+
+        .linkedin-link {
+            color: #0a66c2;
+            background: #eaf4ff;
+        }
+
+        .linkedin-link:hover {
+            color: #004182;
+            background: #d8eaff;
+        }
+
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
+
+        .main-content {
+            min-width: 0;
+            padding: 12px 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 12px;
+
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+        }
 
         .main-content h2 {
-            font-size: 46px;
-            font-weight: 400;
-            line-height: 1.25;
-            margin-bottom: 10px;
+            margin-bottom: 23px;
+
+            font-size: clamp(36px, 4vw, 49px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.05em;
         }
 
         .main-content p {
-            font-size: 19px;
-            line-height: 1.58;
-            margin-bottom: 18px;
+            margin-bottom: 17px;
+
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.95;
         }
 
         .main-content p a {
-            color: #8792b0;
+            color: var(--primary-dark);
+            font-weight: 700;
+            border-bottom: 1px solid #cbd2f4;
         }
 
-        /* =========================
-           INTERESTS AND EDUCATION
-        ========================= */
+        .main-content p a:hover {
+            border-bottom-color: var(--primary-dark);
+        }
+
+        /* =========================================
+           INTERESTS AND EDUCATION CARDS
+        ========================================= */
 
         .details {
             display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 35px;
-            margin-top: 45px;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            gap: 22px;
+
+            margin-top: 35px;
+        }
+
+        .details section {
+            min-width: 0;
+            padding: 24px;
+
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
         }
 
         .details h3 {
-            font-size: 23px;
-            font-weight: 700;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 15px;
+
+            font-size: 19px;
+            font-weight: 800;
         }
 
-        .interests-list {
-            padding-left: 24px;
-            font-size: 18px;
-            line-height: 1.65;
+        .heading-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 34px;
+            height: 34px;
+
+            color: var(--primary);
+            background: var(--primary-light);
+            border-radius: 11px;
+            font-size: 15px;
         }
+
+        /* Coloured research-interest bullets */
+
+        .interests-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interests-list li {
+            position: relative;
+            padding: 5px 0 5px 26px;
+
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .interests-list li::before {
+            content: "\f00c";
+            position: absolute;
+            top: 10px;
+            left: 0;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 16px;
+            height: 16px;
+
+            color: white;
+            background: var(--primary);
+            border-radius: 50%;
+
+            font-family: "Font Awesome 6 Free";
+            font-size: 8px;
+            font-weight: 900;
+        }
+
+        .interests-list li:nth-child(3n + 2)::before {
+            background: var(--teal);
+        }
+
+        .interests-list li:nth-child(3n)::before {
+            background: var(--gold);
+        }
+
+        /* Education */
 
         .education-list {
             list-style: none;
@@ -211,177 +475,414 @@
         .education-list li {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
-            margin-bottom: 12px;
-            font-size: 18px;
-            line-height: 1.5;
+            gap: 11px;
+
+            margin-bottom: 17px;
+
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.6;
         }
 
-        .education-list i {
-            font-size: 20px;
-            margin-top: 5px;
-            color: #333333;
+        .education-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            width: 34px;
+            height: 34px;
+
+            color: #596ab9;
+            background: #eef0ff;
+            border-radius: 11px;
+            font-size: 14px;
+        }
+
+        .education-list li:nth-child(2) .education-icon {
+            color: var(--teal);
+            background: #e8fbf8;
+        }
+
+        .education-list li:nth-child(3) .education-icon {
+            color: #c58922;
+            background: #fff6e4;
         }
 
         .education-list small {
             display: block;
-            font-size: 15px;
-            color: #777777;
-            margin-top: 2px;
+            margin-top: 3px;
+
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.7;
         }
 
-        /* =========================
-           ADDITIONAL SECTIONS
-        ========================= */
+        /* =========================================
+           FULL-WIDTH CONTENT SECTIONS
+        ========================================= */
 
         .extra-section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 30px 35px;
-            scroll-margin-top: 90px;
+            max-width: 1170px;
+            margin: 24px auto;
+            padding: 32px clamp(22px, 4vw, 40px);
+
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 28px rgba(30, 43, 82, 0.035);
+
+            scroll-margin-top: 100px;
         }
 
         .extra-section h2 {
-            font-size: 32px;
-            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
             margin-bottom: 20px;
+
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.4;
         }
 
+        .extra-section h2::before {
+            content: "";
+            display: block;
+            flex-shrink: 0;
+
+            width: 5px;
+            height: 29px;
+
+            border-radius: 5px;
+            background: linear-gradient(180deg, #7e8ce0, #43b7a6);
+        }
+
+        .extra-section > p {
+            color: var(--text);
+            line-height: 1.9;
+        }
+
+        /* =========================================
+           PUBLICATION CARDS
+        ========================================= */
+
         .publication {
-            padding: 18px 0;
-            border-bottom: 1px solid #eeeeee;
+            position: relative;
+
+            margin: 15px 0;
+            padding: 22px 24px;
+
+            background: #fafbff;
+            border: 1px solid #e8ebf7;
+            border-radius: 16px;
+
+            transition: border-color 0.2s ease,
+                        transform 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        .publication:hover {
+            transform: translateY(-2px);
+            border-color: #cbd2f4;
+            box-shadow: 0 8px 22px rgba(30, 43, 82, 0.06);
         }
 
         .publication h3 {
-            font-size: 19px;
-            margin-bottom: 6px;
+            max-width: calc(100% - 35px);
+            margin-bottom: 8px;
+
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.65;
+        }
+
+        .publication h3 a {
+            color: var(--ink);
+        }
+
+        .publication h3 a:hover {
+            color: var(--primary);
         }
 
         .publication p {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        /* =========================
+        .publication p em {
+            color: #4f5c78;
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 3px;
+
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .publication-link:hover {
+            gap: 12px;
+        }
+
+        .publication-icon {
+            position: absolute;
+            top: 23px;
+            right: 22px;
+
+            color: #bdc6ed;
+            font-size: 20px;
+        }
+
+        .scholar-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-top: 10px;
+            padding: 10px 16px;
+
+            color: #285eb8;
+            background: #edf4ff;
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .scholar-all:hover {
+            color: #174b9d;
+            background: #dceaff;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================= */
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+
+            margin: 12px 0;
+            padding: 17px;
+
+            background: #fafbff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            width: 42px;
+            height: 42px;
+
+            color: var(--pink);
+            background: #fff0f3;
+            border-radius: 13px;
+            font-size: 17px;
+        }
+
+        .contact-icon.location {
+            color: var(--teal);
+            background: #e8fbf8;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 3px;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .contact-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        /* =========================================
            FOOTER
-        ========================= */
+        ========================================= */
 
         footer {
+            margin-top: 35px;
+            padding: 28px 20px;
+
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+
+            font-size: 13px;
             text-align: center;
-            padding: 25px;
-            margin-top: 30px;
-            border-top: 1px solid #eeeeee;
-            color: #777777;
-            font-size: 14px;
         }
 
-        /* =========================
-           RESPONSIVE DESIGN
-        ========================= */
+        footer .footer-heart {
+            color: var(--pink);
+            margin: 0 3px;
+        }
 
-        @media (max-width: 1050px) {
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 1000px) {
             .navbar {
-                flex-wrap: wrap;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
             }
 
             .nav-links {
-                gap: 18px;
+                justify-content: flex-start;
             }
 
             .container {
-                gap: 35px;
+                grid-template-columns: 270px minmax(0, 1fr);
+                gap: 28px;
+            }
+
+            .sidebar {
+                padding: 27px 18px;
             }
 
             .profile-image {
-                width: 210px;
-                height: 210px;
-            }
-
-            .main-content p {
-                font-size: 17px;
+                width: 165px;
+                height: 165px;
             }
 
             .details {
-                gap: 20px;
+                grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 760px) {
+        @media (max-width: 720px) {
             .navbar {
                 position: relative;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 18px;
+                padding: 17px 20px;
             }
 
             .logo {
+                font-size: 16px;
                 white-space: normal;
             }
 
             .nav-links {
-                flex-wrap: wrap;
-                gap: 10px 18px;
+                gap: 4px;
             }
 
             .nav-links a {
-                font-size: 15px;
+                padding: 7px 9px;
+                font-size: 12px;
             }
 
             .container {
                 grid-template-columns: 1fr;
-                padding: 30px 22px;
-                gap: 40px;
+                gap: 22px;
+
+                margin-top: 24px;
+                padding: 0 18px 12px;
             }
 
             .sidebar {
-                max-width: 450px;
+                position: static;
                 width: 100%;
+                max-width: 500px;
                 margin: 0 auto;
             }
 
             .profile-image {
-                width: 270px;
-                height: 270px;
+                width: 175px;
+                height: 175px;
             }
 
-            .social-icons {
-                margin-top: 25px;
+            .main-content {
+                padding: 14px 3px;
             }
 
             .main-content h2 {
-                font-size: 36px;
+                font-size: 37px;
             }
 
             .main-content p {
-                font-size: 17px;
+                font-size: 15px;
             }
 
             .details {
-                margin-top: 30px;
-                grid-template-columns: 1fr;
-                gap: 28px;
+                margin-top: 25px;
+                gap: 18px;
             }
 
             .extra-section {
-                padding: 20px 22px;
+                margin: 16px 18px;
+                padding: 25px 20px;
+            }
+
+            .extra-section h2 {
+                font-size: 24px;
             }
         }
 
         @media (max-width: 420px) {
             .sidebar h1 {
-                font-size: 27px;
+                font-size: 26px;
             }
 
-            .position,
-            .university {
-                font-size: 18px;
+            .nav-links a {
+                padding: 6px 7px;
+                font-size: 11px;
             }
 
-            .main-content h2 {
-                font-size: 32px;
+            .details section {
+                padding: 20px;
             }
 
-            .social-icons {
-                gap: 18px;
+            .publication {
+                padding: 18px;
+            }
+
+            .publication-icon {
+                top: 19px;
+                right: 16px;
+                font-size: 16px;
+            }
+
+            .publication h3 {
+                font-size: 15px;
+            }
+        }
+
+        /* Respect users who prefer reduced motion */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
             }
         }
     </style>
@@ -389,20 +890,23 @@
 
 <body>
 
-    <!-- NAVIGATION BAR -->
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
 
     <header class="navbar">
 
         <a href="#home" class="logo">
-            Dr. SUBRATA MANNA
+            <span class="logo-dot"></span>
+            DR. SUBRATA MANNA
         </a>
 
-        <nav>
+        <nav aria-label="Main navigation">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#posts">Posts</a></li>
-                <li><a href="#talks">Talks &amp; Workshops</a></li>
+                <li><a href="#talks">Talks</a></li>
                 <li><a href="#teaching">Teaching</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -411,25 +915,26 @@
     </header>
 
 
-    <!-- MAIN PROFILE AREA -->
+    <!-- =========================================
+         MAIN PROFILE AREA
+    ========================================= -->
 
     <main class="container" id="home">
 
-        <!-- LEFT SIDEBAR -->
+        <!-- PROFILE SIDEBAR -->
 
         <aside class="sidebar">
 
-            <!-- Replace with your photograph -->
             <img
                 src="Profile.jpg"
-                alt="Your profile photograph"
+                alt="Subrata Manna's profile photograph"
                 class="profile-image"
             >
 
             <h1>Subrata Manna</h1>
 
             <p class="position">
-                Post Doctor
+                Postdoctoral Fellow
             </p>
 
             <p class="university">
@@ -437,33 +942,54 @@
                 Department of Mathematics
             </p>
 
-            <!-- SOCIAL MEDIA LINKS -->
+            <!-- SOCIAL MEDIA -->
 
             <div class="social-icons">
 
-                <a href="subrata147314@gmail.com"
-                   aria-label="Email"
-                   title="Email">
-                    <i class="fa-solid fa-paper-plane"></i>
+                <a
+                    href="mailto:subrata147314@gmail.com"
+                    class="email-link"
+                    aria-label="Email Subrata Manna"
+                    title="Email"
+                >
+                    <i class="fa-solid fa-envelope"
+                       aria-hidden="true"></i>
                 </a>
 
-                <a href="https://scholar.google.com/citations?user=QNPl6CkAAAAJ&hl=en&oi=ao"
-                   aria-label="Google Scholar"
-                   title="Google Scholar">
-                    <i class="fa-solid fa-graduation-cap"></i>
+                <a
+                    href="https://scholar.google.com/citations?user=QNPl6CkAAAAJ&amp;hl=en&amp;oi=ao"
+                    class="scholar-link"
+                    aria-label="Google Scholar"
+                    title="Google Scholar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-google-scholar"
+                       aria-hidden="true"></i>
                 </a>
 
-
-                <a href="https://www.researchgate.net/profile/Subrata-Manna-6?ev=hdr_xprf/"
-                   aria-label="ResearchGate"
-                   title="ResearchGate">
-                    <i class="fa-brands fa-researchgate"></i>
+                <a
+                    href="https://www.researchgate.net/profile/Subrata-Manna-6"
+                    class="researchgate-link"
+                    aria-label="ResearchGate"
+                    title="ResearchGate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-researchgate"
+                       aria-hidden="true"></i>
                 </a>
 
-                <a href="https://www.linkedin.com/in/subrata-manna-4418bb362/"
-                   aria-label="LinkedIn"
-                   title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
+                <a
+                    href="https://www.linkedin.com/in/subrata-manna-4418bb362/"
+                    class="linkedin-link"
+                    aria-label="LinkedIn"
+                    title="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <i class="fa-brands fa-linkedin-in"
+                       aria-hidden="true"></i>
                 </a>
 
             </div>
@@ -471,7 +997,7 @@
         </aside>
 
 
-        <!-- RIGHT CONTENT -->
+        <!-- MAIN CONTENT -->
 
         <div class="main-content">
 
@@ -479,25 +1005,36 @@
 
             <section id="about">
 
+                <span class="eyebrow">
+                    Researcher · Mathematician
+                </span>
+
                 <h2>About me</h2>
 
                 <p>
                     I am a postdoctoral fellow at
-                    <a href="#">Indian Institute of Technology Bombay (IITB)</a>,
-                    where I work on research in
-                    Code-based Cryptography. My work focuses on Algebraic geometry and its applications to linear error-correcting codes.
+                    <a href="https://www.iitb.ac.in/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Indian Institute of Technology Bombay (IITB)
+                    </a>,
+                    where I work on research in Code-based Cryptography.
+                    My work focuses on Algebraic geometry and its
+                    applications to linear error-correcting codes.
                 </p>
 
                 <p>
-                    My research combines Algebraic geometry over finite fields,
-                    Linear codes and Code-based Cryptography.
-                    I am particularly interested in the geometric approach of linear codes arising from different kinds of algebraic varieties over finite fields.
+                    My research combines Algebraic geometry over finite
+                    fields, Linear codes and Code-based Cryptography.
+                    I am particularly interested in the geometric approach
+                    of linear codes arising from different kinds of
+                    algebraic varieties over finite fields.
                 </p>
 
                 <p>
-                    In addition to research, I also enjoy exploring nature, watching movies,
-                    sharing research tools, and collaborating
-                    with researchers across disciplines.
+                    In addition to research, I also enjoy exploring nature,
+                    watching movies, sharing research tools, and
+                    collaborating with researchers across disciplines.
                 </p>
 
             </section>
@@ -507,11 +1044,17 @@
 
             <div class="details">
 
-                <!-- INTERESTS -->
+                <!-- RESEARCH INTERESTS -->
 
                 <section id="interests">
 
-                    <h3>Interests</h3>
+                    <h3>
+                        <span class="heading-icon">
+                            <i class="fa-solid fa-lightbulb"
+                               aria-hidden="true"></i>
+                        </span>
+                        Interests
+                    </h3>
 
                     <ul class="interests-list">
                         <li>Linear Codes</li>
@@ -528,34 +1071,59 @@
 
                 <section id="education">
 
-                    <h3>Education</h3>
+                    <h3>
+                        <span class="heading-icon">
+                            <i class="fa-solid fa-graduation-cap"
+                               aria-hidden="true"></i>
+                        </span>
+                        Education
+                    </h3>
 
                     <ul class="education-list">
 
                         <li>
-                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="education-icon">
+                                <i class="fa-solid fa-graduation-cap"
+                                   aria-hidden="true"></i>
+                            </span>
 
                             <div>
                                 PhD in Mathematics, 2025
-                                <small>Indian Institute of Technology Hyderabad (IITH)</small>
+
+                                <small>
+                                    Indian Institute of Technology
+                                    Hyderabad (IITH)
+                                </small>
                             </div>
                         </li>
 
                         <li>
-                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="education-icon">
+                                <i class="fa-solid fa-book-open"
+                                   aria-hidden="true"></i>
+                            </span>
 
                             <div>
                                 MSc in Pure Mathematics, 2020
-                                <small>University of Calcutta</small>
+
+                                <small>
+                                    University of Calcutta
+                                </small>
                             </div>
                         </li>
 
                         <li>
-                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="education-icon">
+                                <i class="fa-solid fa-book"
+                                   aria-hidden="true"></i>
+                            </span>
 
                             <div>
                                 BSc in Mathematics, 2014
-                                <small>University of Calcutta</small>
+
+                                <small>
+                                    University of Calcutta
+                                </small>
                             </div>
                         </li>
 
@@ -570,13 +1138,20 @@
     </main>
 
 
-    <!-- PUBLICATIONS -->
+    <!-- =========================================
+         PUBLICATIONS
+    ========================================= -->
 
     <section class="extra-section" id="publications">
 
         <h2>Selected Publications</h2>
 
-        <div class="publication">
+        <!-- Replace this example with an actual publication -->
+
+        <article class="publication">
+
+            <i class="fa-solid fa-book-open publication-icon"
+               aria-hidden="true"></i>
 
             <h3>
                 <a href="#">
@@ -589,11 +1164,21 @@
                 <em>Journal Name</em>, 2026.
             </p>
 
-            <a href="#">Read Paper →</a>
+            <a href="#" class="publication-link">
+                Read paper
+                <i class="fa-solid fa-arrow-right"
+                   aria-hidden="true"></i>
+            </a>
 
-        </div>
+        </article>
 
-        <div class="publication">
+
+        <!-- Replace this example with an actual publication -->
+
+        <article class="publication">
+
+            <i class="fa-solid fa-file-lines publication-icon"
+               aria-hidden="true"></i>
 
             <h3>
                 <a href="#">
@@ -606,48 +1191,75 @@
                 <em>Conference Name</em>, 2025.
             </p>
 
-            <a href="#">Read Paper →</a>
-
-        </div>
-
-        <p style="margin-top: 20px;">
-            <a href="https://scholar.google.com/">
-                View all publications on Google Scholar →
+            <a href="#" class="publication-link">
+                Read paper
+                <i class="fa-solid fa-arrow-right"
+                   aria-hidden="true"></i>
             </a>
-        </p>
+
+        </article>
+
+        <a
+            href="https://scholar.google.com/citations?user=QNPl6CkAAAAJ&amp;hl=en&amp;oi=ao"
+            class="scholar-all"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <i class="fa-brands fa-google-scholar"
+               aria-hidden="true"></i>
+
+            View all publications on Google Scholar
+
+            <i class="fa-solid fa-arrow-up-right-from-square"
+               aria-hidden="true"></i>
+        </a>
 
     </section>
 
 
-    <!-- POSTS -->
+    <!-- =========================================
+         POSTS
+    ========================================= -->
 
     <section class="extra-section" id="posts">
 
-        <h2>Posts</h2>
+        <h2>Posts &amp; Updates</h2>
 
         <p>
-            Research updates, academic announcements,
-            project news, and articles will appear here.
+            Research updates, academic announcements, project news,
+            and articles will appear here.
         </p>
 
     </section>
 
 
-    <!-- TALKS AND WORKSHOPS -->
+    <!-- =========================================
+         TALKS AND WORKSHOPS
+    ========================================= -->
 
     <section class="extra-section" id="talks">
 
         <h2>Talks &amp; Workshops</h2>
 
-        <div class="publication">
+        <article class="publication">
+
+            <i class="fa-solid fa-microphone publication-icon"
+               aria-hidden="true"></i>
+
             <h3>Research Talk or Workshop Title</h3>
-            <p>Conference or Institution · 2026</p>
-        </div>
+
+            <p>
+                Conference or Institution · 2026
+            </p>
+
+        </article>
 
     </section>
 
 
-    <!-- TEACHING -->
+    <!-- =========================================
+         TEACHING
+    ========================================= -->
 
     <section class="extra-section" id="teaching">
 
@@ -661,33 +1273,71 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
 
     <section class="extra-section" id="contact">
 
-        <h2>Contact</h2>
+        <h2>Get in touch</h2>
 
-        <p>
-            Email:
-            <a href="mailto:your.email@university.edu">
-                subrata147314@gmail.com
-            </a>
-        </p>
+        <div class="contact-card">
 
-        <p>
-            Department of Mathematics, Indian Institute of Technology Bombay
-        </p>
+            <span class="contact-icon">
+                <i class="fa-solid fa-envelope"
+                   aria-hidden="true"></i>
+            </span>
+
+            <div>
+                <h3>Email</h3>
+
+                <p>
+                    <a href="mailto:subrata147314@gmail.com">
+                        subrata147314@gmail.com
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="contact-card">
+
+            <span class="contact-icon location">
+                <i class="fa-solid fa-building-columns"
+                   aria-hidden="true"></i>
+            </span>
+
+            <div>
+                <h3>Academic affiliation</h3>
+
+                <p>
+                    Department of Mathematics,<br>
+                    Indian Institute of Technology Bombay
+                </p>
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
 
     <footer>
-        &copy; <span id="year">2026</span>
-        Subrata Manna. Hosted with GitHub Pages.
+
+        &copy; <span id="year"></span> Subrata Manna.
+
+        Designed with
+        <i class="fa-solid fa-heart footer-heart"
+           aria-label="love"></i>
+        for academic research.
+
     </footer>
 
+
+    <!-- AUTOMATIC COPYRIGHT YEAR -->
 
     <script>
         document.getElementById("year").textContent =
@@ -696,3 +1346,4 @@
 
 </body>
 </html>
+```
