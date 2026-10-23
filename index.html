@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,6 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap"
           rel="stylesheet">
 
@@ -57,7 +55,6 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 100px;
         }
 
         body {
@@ -147,7 +144,7 @@
 
         .nav-links a {
             display: inline-block;
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: 999px;
 
             color: #475168;
@@ -155,13 +152,14 @@
             font-weight: 700;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--primary-dark);
             background: var(--primary-light);
         }
 
         /* =========================================
-           MAIN PROFILE LAYOUT
+           MAIN LAYOUT & PAGE TOGGLING
         ========================================= */
 
         .container {
@@ -173,6 +171,26 @@
             max-width: 1220px;
             margin: 42px auto 35px;
             padding: 0 25px;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.25s ease-in-out;
+        }
+
+        .page-section.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* =========================================
@@ -235,9 +253,7 @@
             line-height: 1.8;
         }
 
-        /* =========================================
-           COLOURED SOCIAL ICONS
-        ========================================= */
+        /* Social Icons */
 
         .social-icons {
             display: flex;
@@ -269,56 +285,20 @@
             box-shadow: 0 8px 18px rgba(30, 43, 82, 0.13);
         }
 
-        /* Email */
+        .email-link { color: #d94f70; background: #fff0f3; }
+        .email-link:hover { color: #b72f51; background: #ffe1e8; }
 
-        .email-link {
-            color: #d94f70;
-            background: #fff0f3;
-        }
+        .scholar-link { color: #4285f4; background: #edf4ff; }
+        .scholar-link:hover { color: #185abc; background: #dceaff; }
 
-        .email-link:hover {
-            color: #b72f51;
-            background: #ffe1e8;
-        }
+        .researchgate-link { color: #00a99d; background: #e8fbf8; }
+        .researchgate-link:hover { color: #007e75; background: #d4f5ef; }
 
-        /* Google Scholar */
-
-        .scholar-link {
-            color: #4285f4;
-            background: #edf4ff;
-        }
-
-        .scholar-link:hover {
-            color: #185abc;
-            background: #dceaff;
-        }
-
-        /* ResearchGate */
-
-        .researchgate-link {
-            color: #00a99d;
-            background: #e8fbf8;
-        }
-
-        .researchgate-link:hover {
-            color: #007e75;
-            background: #d4f5ef;
-        }
-
-        /* LinkedIn */
-
-        .linkedin-link {
-            color: #0a66c2;
-            background: #eaf4ff;
-        }
-
-        .linkedin-link:hover {
-            color: #004182;
-            background: #d8eaff;
-        }
+        .linkedin-link { color: #0a66c2; background: #eaf4ff; }
+        .linkedin-link:hover { color: #004182; background: #d8eaff; }
 
         /* =========================================
-           MAIN CONTENT
+           MAIN CONTENT PAGES
         ========================================= */
 
         .main-content {
@@ -350,10 +330,10 @@
         .main-content h2 {
             margin-bottom: 23px;
 
-            font-size: clamp(36px, 4vw, 49px);
+            font-size: clamp(32px, 4vw, 42px);
             font-weight: 800;
             line-height: 1.2;
-            letter-spacing: -0.05em;
+            letter-spacing: -0.04em;
         }
 
         .main-content p {
@@ -375,7 +355,7 @@
         }
 
         /* =========================================
-           INTERESTS AND EDUCATION CARDS
+           INTERESTS & EDUCATION CARDS
         ========================================= */
 
         .details {
@@ -420,8 +400,6 @@
             font-size: 15px;
         }
 
-        /* Coloured research-interest bullets */
-
         .interests-list {
             list-style: none;
             padding: 0;
@@ -458,15 +436,8 @@
             font-weight: 900;
         }
 
-        .interests-list li:nth-child(3n + 2)::before {
-            background: var(--teal);
-        }
-
-        .interests-list li:nth-child(3n)::before {
-            background: var(--gold);
-        }
-
-        /* Education */
+        .interests-list li:nth-child(3n + 2)::before { background: var(--teal); }
+        .interests-list li:nth-child(3n)::before { background: var(--gold); }
 
         .education-list {
             list-style: none;
@@ -503,15 +474,8 @@
             font-size: 14px;
         }
 
-        .education-list li:nth-child(2) .education-icon {
-            color: var(--teal);
-            background: #e8fbf8;
-        }
-
-        .education-list li:nth-child(3) .education-icon {
-            color: #c58922;
-            background: #fff6e4;
-        }
+        .education-list li:nth-child(2) .education-icon { color: var(--teal); background: #e8fbf8; }
+        .education-list li:nth-child(3) .education-icon { color: #c58922; background: #fff6e4; }
 
         .education-list small {
             display: block;
@@ -524,54 +488,7 @@
         }
 
         /* =========================================
-           FULL-WIDTH CONTENT SECTIONS
-        ========================================= */
-
-        .extra-section {
-            max-width: 1170px;
-            margin: 24px auto;
-            padding: 32px clamp(22px, 4vw, 40px);
-
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: 0 8px 28px rgba(30, 43, 82, 0.035);
-
-            scroll-margin-top: 100px;
-        }
-
-        .extra-section h2 {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            margin-bottom: 20px;
-
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            line-height: 1.4;
-        }
-
-        .extra-section h2::before {
-            content: "";
-            display: block;
-            flex-shrink: 0;
-
-            width: 5px;
-            height: 29px;
-
-            border-radius: 5px;
-            background: linear-gradient(180deg, #7e8ce0, #43b7a6);
-        }
-
-        .extra-section > p {
-            color: var(--text);
-            line-height: 1.9;
-        }
-
-        /* =========================================
-           PUBLICATION CARDS
+           PUBLICATIONS CARDS
         ========================================= */
 
         .publication {
@@ -580,8 +497,8 @@
             margin: 15px 0;
             padding: 22px 24px;
 
-            background: #fafbff;
-            border: 1px solid #e8ebf7;
+            background: var(--white);
+            border: 1px solid var(--border);
             border-radius: 16px;
 
             transition: border-color 0.2s ease,
@@ -654,7 +571,7 @@
             align-items: center;
             gap: 9px;
 
-            margin-top: 10px;
+            margin-top: 15px;
             padding: 10px 16px;
 
             color: #285eb8;
@@ -671,18 +588,53 @@
         }
 
         /* =========================================
-           CONTACT SECTION
+           TEACHING & CONTACT SECTIONS
         ========================================= */
+
+        .teaching-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 15px;
+        }
+
+        .teaching-item {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+
+            padding: 16px 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+
+        .subject {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .subject-tag {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .tag-blue { background-color: #4a90e2; }
+        .tag-green { background-color: #43a77a; }
 
         .contact-card {
             display: flex;
             align-items: flex-start;
             gap: 14px;
 
-            margin: 12px 0;
-            padding: 17px;
+            margin: 14px 0;
+            padding: 20px;
 
-            background: #fafbff;
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: 14px;
         }
@@ -820,110 +772,25 @@
             }
 
             .main-content h2 {
-                font-size: 37px;
-            }
-
-            .main-content p {
-                font-size: 15px;
+                font-size: 32px;
             }
 
             .details {
                 margin-top: 25px;
                 gap: 18px;
             }
-
-            .extra-section {
-                margin: 16px 18px;
-                padding: 25px 20px;
-            }
-
-            .extra-section h2 {
-                font-size: 24px;
-            }
         }
-
-        @media (max-width: 420px) {
-            .sidebar h1 {
-                font-size: 26px;
-            }
-
-            .nav-links a {
-                padding: 6px 7px;
-                font-size: 11px;
-            }
-
-            .details section {
-                padding: 20px;
-            }
-
-            .publication {
-                padding: 18px;
-            }
-
-            .publication-icon {
-                top: 19px;
-                right: 16px;
-                font-size: 16px;
-            }
-
-            .publication h3 {
-                font-size: 15px;
-            }
-        }
-
-        /* Respect users who prefer reduced motion */
 
         @media (prefers-reduced-motion: reduce) {
             html {
                 scroll-behavior: auto;
             }
 
-            *,
-            *::before,
-            *::after {
+            *, *::before, *::after {
                 transition-duration: 0.01ms !important;
                 animation-duration: 0.01ms !important;
             }
         }
-
-/* Teaching section */
-
-
-.teaching-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
-}
-
-.teaching-item {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    line-height: 1.6;
-}
-
-.subject {
-    font-size: 15px;
-}
-
-.subject-tag {
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    border-radius: 2px;
-    flex-shrink: 0;
-}
-
-.tag-blue {
-    background-color: #4a90e2;
-}
-
-.tag-green {
-    background-color: #43a77a;
-}
-
-
     </style>
 </head>
 
@@ -942,7 +809,7 @@
 
         <nav aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#posts">Posts</a></li>
                 <li><a href="#talks">Talks</a></li>
@@ -955,12 +822,12 @@
 
 
     <!-- =========================================
-         MAIN PROFILE AREA
+         MAIN LAYOUT
     ========================================= -->
 
-    <main class="container" id="home">
+    <main class="container">
 
-        <!-- PROFILE SIDEBAR -->
+        <!-- PERSISTENT PROFILE SIDEBAR -->
 
         <aside class="sidebar">
 
@@ -991,8 +858,7 @@
                     aria-label="Email Subrata Manna"
                     title="Email"
                 >
-                    <i class="fa-solid fa-envelope"
-                       aria-hidden="true"></i>
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 </a>
 
                 <a
@@ -1003,8 +869,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <i class="fa-brands fa-google-scholar"
-                       aria-hidden="true"></i>
+                    <i class="fa-brands fa-google-scholar" aria-hidden="true"></i>
                 </a>
 
                 <a
@@ -1015,8 +880,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <i class="fa-brands fa-researchgate"
-                       aria-hidden="true"></i>
+                    <i class="fa-brands fa-researchgate" aria-hidden="true"></i>
                 </a>
 
                 <a
@@ -1027,8 +891,7 @@
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <i class="fa-brands fa-linkedin-in"
-                       aria-hidden="true"></i>
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                 </a>
 
             </div>
@@ -1036,139 +899,255 @@
         </aside>
 
 
-        <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT PAGES -->
 
         <div class="main-content">
 
-            <!-- ABOUT ME -->
+            <!-- PAGE 1: HOME (ABOUT ME, INTERESTS, EDUCATION) -->
 
-            <section id="about">
+            <div id="home" class="page-section active-page">
 
-                <span class="eyebrow">
-                    Researcher · Mathematician
-                </span>
+                <section>
+                    <span class="eyebrow">Researcher · Mathematician</span>
+                    <h2>About me</h2>
 
-                <h2>About me</h2>
+                    <p>
+                        I am a postdoctoral fellow at
+                        <a href="https://www.iitb.ac.in/" target="_blank" rel="noopener noreferrer">
+                            Indian Institute of Technology Bombay (IITB)
+                        </a>, where I work on research in Code-based Cryptography.
+                        My work focuses on Algebraic geometry and its applications to linear error-correcting codes.
+                    </p>
 
-                <p>
-                    I am a postdoctoral fellow at
-                    <a href="https://www.iitb.ac.in/"
-                       target="_blank"
-                       rel="noopener noreferrer">
-                        Indian Institute of Technology Bombay (IITB)
-                    </a>,
-                    where I work on research in Code-based Cryptography.
-                    My work focuses on Algebraic geometry and its
-                    applications to linear error-correcting codes.
-                </p>
+                    <p>
+                        My research combines Algebraic geometry over finite fields, Linear codes and Code-based Cryptography.
+                        I am particularly interested in the geometric approach of linear codes arising from different kinds of algebraic varieties over finite fields.
+                    </p>
 
-                <p>
-                    My research combines Algebraic geometry over finite
-                    fields, Linear codes and Code-based Cryptography.
-                    I am particularly interested in the geometric approach
-                    of linear codes arising from different kinds of
-                    algebraic varieties over finite fields.
-                </p>
-
-                <p>
-                    In addition to research, I also enjoy exploring nature,
-                    watching movies, sharing research tools, and
-                    collaborating with researchers across disciplines.
-                </p>
-
-            </section>
-
-
-            <!-- INTERESTS AND EDUCATION -->
-
-            <div class="details">
-
-                <!-- RESEARCH INTERESTS -->
-
-                <section id="interests">
-
-                    <h3>
-                        <span class="heading-icon">
-                            <i class="fa-solid fa-lightbulb"
-                               aria-hidden="true"></i>
-                        </span>
-                        Interests
-                    </h3>
-
-                    <ul class="interests-list">
-                        <li>Algebraic Coding theory</li>
-                        <li>Algebraic Geometry</li>
-                        <li>Cryptography</li>
-                        <li>Combinatorics</li>
-                        <li>Open Science</li>
-                    </ul>
-
+                    <p>
+                        In addition to research, I also enjoy exploring nature, watching movies, sharing research tools, and collaborating with researchers across disciplines.
+                    </p>
                 </section>
 
+                <div class="details">
 
-                <!-- EDUCATION -->
+                    <!-- RESEARCH INTERESTS -->
+                    <section>
+                        <h3>
+                            <span class="heading-icon">
+                                <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                            </span>
+                            Interests
+                        </h3>
+                        <ul class="interests-list">
+                            <li>Algebraic Coding theory</li>
+                            <li>Algebraic Geometry</li>
+                            <li>Cryptography</li>
+                            <li>Combinatorics</li>
+                            <li>Open Science</li>
+                        </ul>
+                    </section>
 
-                <section id="education">
+                    <!-- EDUCATION -->
+                    <section>
+                        <h3>
+                            <span class="heading-icon">
+                                <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                            </span>
+                            Education
+                        </h3>
 
+                        <ul class="education-list">
+                            <li>
+                                <span class="education-icon">
+                                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                                </span>
+                                <div>
+                                    PhD in Mathematics, 2025
+                                    <small>Indian Institute of Technology Hyderabad (IITH)</small>
+                                </div>
+                            </li>
+
+                            <li>
+                                <span class="education-icon">
+                                    <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                                </span>
+                                <div>
+                                    MSc in Pure Mathematics, 2020
+                                    <small>University of Calcutta</small>
+                                </div>
+                            </li>
+
+                            <li>
+                                <span class="education-icon">
+                                    <i class="fa-solid fa-book" aria-hidden="true"></i>
+                                </span>
+                                <div>
+                                    BSc in Mathematics, 2018
+                                    <small>University of Calcutta</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAGE 2: PUBLICATIONS -->
+
+            <div id="publications" class="page-section">
+
+                <span class="eyebrow">Research Papers</span>
+                <h2>Publications</h2>
+
+                <article class="publication">
+                    <i class="fa-solid fa-file-lines publication-icon" aria-hidden="true"></i>
                     <h3>
-                        <span class="heading-icon">
-                            <i class="fa-solid fa-graduation-cap"
-                               aria-hidden="true"></i>
-                        </span>
-                        Education
+                        <a href="https://doi.org/10.1007/s10623-025-01766-x" target="_blank" rel="noopener">
+                            Maximum number of points of intersection of a non-degenerate Hermitian variety and a cubic hypersurface.
+                        </a>
                     </h3>
+                    <p>
+                        <em>Des. Codes Cryptogr. 94, 31.</em>, 2026.
+                    </p>
+                    <a href="https://doi.org/10.1007/s10623-025-01766-x" class="publication-link" target="_blank" rel="noopener">
+                        Read paper <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </article>
 
-                    <ul class="education-list">
+                <article class="publication">
+                    <i class="fa-solid fa-file-lines publication-icon" aria-hidden="true"></i>
+                    <h3>
+                        <a href="https://doi.org/10.1016/j.ffa.2024.102462" target="_blank" rel="noopener">
+                            Maximum number of points on an intersection of a cubic threefold and a non-degenerate Hermitian threefold.
+                        </a>
+                    </h3>
+                    <p>
+                        with Mrinmoy Datta.
+                        <em>Finite Fields Appl. 98, Paper No. 102462, 23 pp.</em>, 2024.
+                    </p>
+                    <a href="https://doi.org/10.1016/j.ffa.2024.102462" class="publication-link" target="_blank" rel="noopener">
+                        Read paper <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </article>
 
-                        <li>
-                            <span class="education-icon">
-                                <i class="fa-solid fa-graduation-cap"
-                                   aria-hidden="true"></i>
-                            </span>
+                <article class="publication">
+                    <i class="fa-solid fa-file-lines publication-icon" aria-hidden="true"></i>
+                    <h3>
+                        <a href="https://doi.org/10.1007/s10998-022-00501-6" target="_blank" rel="noopener">
+                            A generalization of Gerzon’s bound on spherical s-distance sets.
+                        </a>
+                    </h3>
+                    <p>
+                        with Mrinmoy Datta.
+                        <em>Period. Math. Hungar. 87, no. 1, 51–56.</em>, 2023.
+                    </p>
+                    <a href="https://doi.org/10.1007/s10998-022-00501-6" class="publication-link" target="_blank" rel="noopener">
+                        Read paper <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </article>
 
-                            <div>
-                                PhD in Mathematics, 2025
+                <a href="https://scholar.google.com/citations?user=QNPl6CkAAAAJ&amp;hl=en" target="_blank" rel="noopener" class="scholar-all">
+                    <i class="fa-brands fa-google-scholar"></i> View all on Google Scholar
+                </a>
 
-                                <small>
-                                    Indian Institute of Technology
-                                    Hyderabad (IITH)
-                                </small>
-                            </div>
-                        </li>
+            </div>
 
-                        <li>
-                            <span class="education-icon">
-                                <i class="fa-solid fa-book-open"
-                                   aria-hidden="true"></i>
-                            </span>
 
-                            <div>
-                                MSc in Pure Mathematics, 2020
+            <!-- PAGE 3: POSTS -->
 
-                                <small>
-                                    University of Calcutta
-                                </small>
-                            </div>
-                        </li>
+            <div id="posts" class="page-section">
 
-                        <li>
-                            <span class="education-icon">
-                                <i class="fa-solid fa-book"
-                                   aria-hidden="true"></i>
-                            </span>
+                <span class="eyebrow">Articles &amp; Writing</span>
+                <h2>Posts</h2>
 
-                            <div>
-                                BSc in Mathematics, 2018
+                <p>Welcome to my posts page. Here I share insights, research tools, and computational notes on code-based cryptography and algebraic geometry.</p>
 
-                                <small>
-                                    University of Calcutta
-                                </small>
-                            </div>
-                        </li>
+                <!-- Example Post Entry -->
+                <article class="publication">
+                    <i class="fa-solid fa-pen-nib publication-icon" aria-hidden="true"></i>
+                    <h3><a href="#">Introduction to Algebraic Geometry Codes</a></h3>
+                    <p><em>Published on October 2026</em></p>
+                    <p>A gentle introduction to error-correcting codes generated from algebraic curves over finite fields.</p>
+                </article>
 
-                    </ul>
+            </div>
 
-                </section>
+
+            <!-- PAGE 4: TALKS -->
+
+            <div id="talks" class="page-section">
+
+                <span class="eyebrow">Presentations</span>
+                <h2>Talks</h2>
+
+                <p>Selected talks, seminar presentations, and conference discussions.</p>
+
+                <article class="publication">
+                    <i class="fa-solid fa-chalkboard-user publication-icon" aria-hidden="true"></i>
+                    <h3>Intersection of Hermitian Varieties and Hypersurfaces</h3>
+                    <p><em>Department of Mathematics, IIT Bombay</em></p>
+                    <p>Seminar talk discussing point bounds on finite field intersections.</p>
+                </article>
+
+            </div>
+
+
+            <!-- PAGE 5: TEACHING -->
+
+            <div id="teaching" class="page-section">
+
+                <span class="eyebrow">Courses &amp; Tutoring</span>
+                <h2>Teaching</h2>
+
+                <p>Courses and tutorial sessions I have conducted or assisted with:</p>
+
+                <div class="teaching-list">
+                    <div class="teaching-item">
+                        <span class="subject-tag tag-blue"></span>
+                        <div class="subject">Linear Algebra &amp; Applications</div>
+                    </div>
+                    <div class="teaching-item">
+                        <span class="subject-tag tag-green"></span>
+                        <div class="subject">Algebraic Coding Theory</div>
+                    </div>
+                    <div class="teaching-item">
+                        <span class="subject-tag tag-blue"></span>
+                        <div class="subject">Calculus &amp; Real Analysis</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- PAGE 6: CONTACT -->
+
+            <div id="contact" class="page-section">
+
+                <span class="eyebrow">Get in Touch</span>
+                <h2>Contact</h2>
+
+                <div class="contact-card">
+                    <span class="contact-icon">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:subrata147314@gmail.com">subrata147314@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <span class="contact-icon location">
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    </span>
+                    <div>
+                        <h3>Office</h3>
+                        <p>Department of Mathematics,<br>Indian Institute of Technology Bombay, Powai, Mumbai 400076, India</p>
+                    </div>
+                </div>
 
             </div>
 
@@ -1176,340 +1155,53 @@
 
     </main>
 
-
-    <!-- =========================================
-         PUBLICATIONS
-    ========================================= -->
-
-    <section class="extra-section" id="publications">
-
-        <h2>Publications</h2>
-
-        <!-- Replace this example with an actual publication -->
-
-        <article class="publication">
-
-            <i class="fa-solid fa-file-lines publication-icon"
-               aria-hidden="true"></i>
-
-            <h3>
-                <a href="https://doi.org/10.1007/s10623-025-01766-x">
-                   Maximum number of points of intersection of a non-degenerate Hermitian
-variety and a cubic hypersurface. 
-                </a>
-            </h3>
-
-            <p>
-                
-                <em>Des. Codes Cryptogr. 94, 31. </em>, 2026.
-            </p>
-
-            <a href="https://doi.org/10.1007/s10623-025-01766-x" class="publication-link">
-                Read paper
-                <i class="fa-solid fa-arrow-right"
-                   aria-hidden="true"></i>
-            </a>
-
-        </article>
-
-
-        <!-- Replace this example with an actual publication -->
-
-        <article class="publication">
-
-            <i class="fa-solid fa-file-lines publication-icon"
-               aria-hidden="true"></i>
-
-            <h3>
-                <a href="https://doi.org/10.1016/j.ffa.2024.102462">
-                    Maximum number of points on an intersection of a cubic threefold and a non-degenerate Hermitian threefold.
-                </a>
-            </h3>
-
-            <p>
-                with Mrinmoy Datta.
-                <em>Finite Fields Appl. 98, Paper No.
-102462, 23 pp.
-</em>, 2024.
-            </p>
-
-            <a href="https://doi.org/10.1016/j.ffa.2024.102462" class="publication-link">
-                Read paper
-                <i class="fa-solid fa-arrow-right"
-                   aria-hidden="true"></i>
-            </a>
-
-
-  </article>
-
-
-        <!-- Replace this example with an actual publication -->
-
-        <article class="publication">
-
-            <i class="fa-solid fa-file-lines publication-icon"
-               aria-hidden="true"></i>
-
-            <h3>
-                <a href="https://doi.org/10.1007/s10998-022-00501-6">
-                    A generalization of Gerzon’s bound on spherical s-distance sets.
-                </a>
-            </h3>
-
-            <p>
-                with Mrinmoy Datta.
-                <em>Period. Math. Hungar. 87, no. 1, 51–56.
-</em>, 2023.
-            </p>
-
-            <a href="https://doi.org/10.1007/s10998-022-00501-6" class="publication-link">
-                Read paper
-                <i class="fa-solid fa-arrow-right"
-                   aria-hidden="true"></i>
-            </a>
-
-
-            
-        </article>
-
-        <a
-            href="https://scholar.google.com/citations?user=QNPl6CkAAAAJ&amp;hl=en&amp;oi=ao"
-            class="scholar-all"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <i class="fa-brands fa-google-scholar"
-               aria-hidden="true"></i>
-
-            View all publications on Google Scholar
-
-            <i class="fa-solid fa-arrow-up-right-from-square"
-               aria-hidden="true"></i>
-        </a>
-
-
-        <!-- Preprints -->
-        <div class="research-subsection" id="preprints">
-
-            <h3>
-                <i class="fa-solid fa-file-circle-question"
-                   aria-hidden="true"></i>
-                Preprints
-            </h3>
-
-            <article class="publication">
-                <h4>Functional codes arising from rank n Hermitian varieties and hypersurfaces in
-low dimensions.</h4>
-
-                <p> 2026.
-                </p>
-
-                <a href="https://arxiv.org/abs/2605.23221"
-                   class="https://arxiv.org/abs/2605.23221"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Read preprint
-                    <i class="fa-solid fa-arrow-right"
-                       aria-hidden="true"></i>
-                </a>
-            </article>
-
-
-
-            <article class="publication">
-                <h4>Results on Edoukou’s Conjecture on Hermitian Threefolds</h4>
-
-                <p> with Mrinmoy Datta, 2026.
-                </p>
-
-                <a href=""
-                   class=""
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Read preprint
-                    <i class="fa-solid fa-arrow-right"
-                       aria-hidden="true"></i>
-                </a>
-            </article>
-            
-        </div>
-
-
-        <!-- Ongoing Works -->
-        <div class="research-subsection" id="ongoing-works">
-
-            <h3>
-                <i class="fa-solid fa-pen-to-square"
-                   aria-hidden="true"></i>
-                Ongoing Works
-            </h3>
-
-            <article class="publication">
-                <h4>Higher Determinantal Codes of rank one</h4>
-
-                <p>
-                    with Sudhir R Ghorpade and Trygve Johnsen
-                </p>
-
-                <span class="work-status">
-                    In progress
-                </span>
-            </article>
-
-        </div>
-
-
-        
-
-    </section>
-
-
-    <!-- =========================================
-         POSTS
-    ========================================= -->
-
-    <section class="extra-section" id="posts">
-
-        <h2>Posts &amp; Updates</h2>
-
-        <p>
-            Research updates, academic announcements, project news,
-            and articles will appear here.
-        </p>
-
-    </section>
-
-
-    <!-- =========================================
-         TALKS AND WORKSHOPS
-    ========================================= -->
-
-   <section class="extra-section" id="teaching">
-
-    <h2>Talks</h2>
-
-    <div class="teaching-list">
-
-        <div class="teaching-item">
-            <span class="subject-tag tag-blue"></span>
-            <span class="subject">
-                IIT Bombay- Virginia Tech Joint Workshop on Algebraic Coding Theory (IITB-VT
-ACTW-2024), August 23 - 25, 2024.
-            </span>
-        </div>
-    </div>
-
-</section>
-
-    <!-- =========================================
-         TEACHING
-    ========================================= -->
-
-   
-
-
-<section class="extra-section" id="teaching">
-
-    <h2>Teaching</h2>
-
-    <div class="teaching-list">
-
-        <div class="teaching-item">
-            <span class="subject-tag tag-blue"></span>
-            <span class="subject">
-                TA for the courses: Linear Algebra, Calculus,
-                Transformation Techniques, Number Theory, and
-                Complex Analysis (IITH)
-            </span>
-        </div>
-
-        <div class="teaching-item">
-            <span class="subject-tag tag-green"></span>
-            <span class="subject">
-                AIS – Advanced Topics in Finite Fields (2023), IMSC
-                (TA for Dr. Mrinmoy Datta)
-            </span>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-
-    <!-- =========================================
-         CONTACT
-    ========================================= -->
-
-    <section class="extra-section" id="contact">
-
-        <h2>Get in touch</h2>
-
-        <div class="contact-card">
-
-            <span class="contact-icon">
-                <i class="fa-solid fa-envelope"
-                   aria-hidden="true"></i>
-            </span>
-
-            <div>
-                <h3>Email</h3>
-
-                <p>
-                    <a href="mailto:subrata147314@gmail.com">
-                        subrata147314@gmail.com
-                    </a>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="contact-card">
-
-            <span class="contact-icon location">
-                <i class="fa-solid fa-building-columns"
-                   aria-hidden="true"></i>
-            </span>
-
-            <div>
-                <h3>Academic affiliation</h3>
-
-                <p>
-                    Department of Mathematics,<br>
-                    Indian Institute of Technology Bombay
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
+    <!-- FOOTER -->
 
     <footer>
-
-        &copy; <span id="year"></span> Subrata Manna.
-
-        Designed with
-        <i class="fa-solid fa-heart footer-heart"
-           aria-label="love"></i>
-        for academic research.
-
+        <p>&copy; 2026 Subrata Manna. All rights reserved.</p>
     </footer>
 
-
-    <!-- AUTOMATIC COPYRIGHT YEAR -->
+    <!-- =========================================
+         JAVASCRIPT FOR MULTI-PAGE NAVIGATION
+    ========================================= -->
 
     <script>
-        document.getElementById("year").textContent =
-            new Date().getFullYear();
+        function navigateToSection(hash) {
+            // Get page ID from URL hash or default to 'home'
+            const pageId = hash ? hash.replace('#', '') : 'home';
+
+            // Hide all page sections
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            // Remove active style from navbar links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show selected page (fallback to home if ID does not exist)
+            const targetPage = document.getElementById(pageId) || document.getElementById('home');
+            targetPage.classList.add('active-page');
+
+            // Highlight corresponding navbar item
+            const activeNav = document.querySelector(`.nav-links a[href="#${targetPage.id}"]`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            // Smooth scroll to top when changing pages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle navigation link clicks and browser back/forward buttons
+        window.addEventListener('hashchange', () => {
+            navigateToSection(window.location.hash);
+        });
+
+        // Handle initial page load
+        window.addEventListener('DOMContentLoaded', () => {
+            navigateToSection(window.location.hash);
+        });
     </script>
 
 </body>
 </html>
-```
