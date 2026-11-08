@@ -124,16 +124,35 @@
             box-shadow: var(--shadow);
         }
         .profile-image {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 20px;
+    width: 280px;
+    height: 280px;
+    display: block;
+    margin: 0 auto 24px;
+
+    /* Makes the photo fill the circle */
     object-fit: cover;
     object-position: center;
+
+    /* Circular profile */
     border-radius: 50%;
+
+    /* Clean border */
     border: 6px solid #f0f2ff;
-    box-shadow: 0 0 0 1px #dce1fb;
-    display: block;
+
+    /* Subtle definition */
+    box-shadow:
+        0 0 0 1px #dce1fb,
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    /* Prevents accidental shrinking */
+    flex-shrink: 0;
+
+    /* Keep normal photo rendering */
     image-rendering: auto;
+
+    /* Prevents selection artifacts */
+    user-select: none;
+    -webkit-user-drag: none;
 }
         .sidebar h1 {
             margin-bottom: 12px;
